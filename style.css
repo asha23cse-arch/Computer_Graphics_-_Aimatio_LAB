@@ -1,0 +1,114 @@
+:root {
+  --green: #1b7f5c;
+  --green-dark: #0b4f3a;
+  --red: #d62828;
+  --gold: #ffd23f;
+  --paper: #fff8e7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at 50% 0%, #2d6a4f 0%, #1b4332 60%, #081c15 100%);
+  font-family: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+  color: var(--paper);
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 16px 24px;
+}
+
+/* HUD */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.hud-item {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, .35);
+  border: 2px solid rgba(255, 210, 63, .6);
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.hud-item .label { font-size: .95rem; color: var(--gold); }
+
+/* Canvas */
+.stage {
+  position: relative;
+  border: 4px solid var(--gold);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .5);
+  background: #5bc0eb;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+/* Overlay (start / game over / win) */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(8, 28, 21, .78);
+  backdrop-filter: blur(2px);
+}
+.overlay.hidden { display: none; }
+.overlay h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  color: var(--gold);
+  text-shadow: 0 3px 0 var(--red);
+}
+.overlay p { margin: 0; font-size: clamp(1rem, 2.6vw, 1.3rem); max-width: 34ch; }
+.overlay .keys { font-size: .9rem; opacity: .8; max-width: none; }
+
+button {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  background: var(--green);
+  border: 3px solid var(--gold);
+  border-radius: 12px;
+  padding: 10px 22px;
+  font-size: 1.15rem;
+  transition: transform .08s, background .15s;
+}
+button:hover { background: #249b72; }
+button:active { transform: scale(.95); }
+
+/* Touch controls (only on touch devices) */
+.touch { display: none; justify-content: space-between; margin-top: 12px; }
+.touch .pad { display: flex; gap: 12px; }
+.touch button {
+  min-width: 72px;
+  min-height: 64px;
+  user-select: none;
+  touch-action: none;
+  background: rgba(27, 127, 92, .85);
+}
+@media (pointer: coarse) {
+  .touch { display: flex; }
+}

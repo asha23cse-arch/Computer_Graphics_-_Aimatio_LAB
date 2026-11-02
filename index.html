@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>চাষি ভাইয়ের অভিযান</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hud">
+      <div class="hud-item"><span class="label">স্কোর</span><span id="score">0</span></div>
+      <div class="hud-item"><span class="label">ধান</span><span id="coins">0</span></div>
+      <div class="hud-item"><span class="label">জীবন</span><span id="lives">3</span></div>
+    </header>
+
+    <div class="stage">
+      <canvas id="game" width="960" height="540"></canvas>
+
+      <div id="overlay" class="overlay">
+        <h1 id="ovTitle">চাষি ভাইয়ের অভিযান</h1>
+        <p id="ovText">ধান কুড়াও, পোকা মাড়াও, আর শেষে জাতীয় পতাকার কাছে পৌঁছাও!</p>
+        <button id="ovBtn" type="button">খেলা শুরু করো</button>
+        <p class="keys">← → / A D = চলা &nbsp;|&nbsp; Space / ↑ / W = লাফ &nbsp;|&nbsp; Shift = দৌড়</p>
+      </div>
+    </div>
+
+    <div class="touch" aria-hidden="true">
+      <div class="pad">
+        <button data-key="left">◀</button>
+        <button data-key="right">▶</button>
+      </div>
+      <div class="pad">
+        <button data-key="run">দৌড়</button>
+        <button data-key="jump">লাফ</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
